@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.btn.btn-outline-success.mr-3{
+    min-width: 100px;
+    font-weight: bold;
+}
+
+.btn.btn-outline-danger.mr-3{
+    min-width: 100px;
+    font-weight: bold;
+}
+
+.input-group.mb-3{
+    width: 300px;
+    margin: 0 auto;
+}
+
+.p-5.mt-3.bg-light.rounded.active{
+    display: block !important;
+    transition: 1s;
+    animation: show 1s linear;
+}
+
+.alert.alert-danger.active{
+    width: 500px;
+    margin: 30px auto 0;
+    display: block !important;
+}
+
+@keyframes show {
+    from {
+        max-height: 0;
+    }
+    to {
+        max-height: 1000px;
+    }
+}
