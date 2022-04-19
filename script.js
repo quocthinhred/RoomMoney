@@ -1,10 +1,10 @@
 
-let data = JSON.parse(localStorage.getItem("roomMoney")) || [];
+let data = [];
 let user = [];
 let payer = 0;
 let money = 0;
 let reason = "";
-let dataAPI = "http://127.0.0.1:3000/data"
+let dataAPI = "http://157.245.195.153:3000/data"
 
 
 const mainTable = document.getElementById("mainTable");
@@ -121,29 +121,57 @@ const calculate = async function(){
 loadTable();
 calculate();
 
-// const getData = function(dataAPI){
-//     fetch(dataAPI)
-//         .then(res => res.json())
-//         .then((res)=>{
-//             data = res;
-//         })
-//         .then(()=>{
-//             loadTable();
-//             calculate();
-//         })
-    
-// }
+const getData = function(){
+    fetch(dataAPI)
+        .then(res => res.json())
+        .then((res)=>{
+            data = res;
+        })
+        .then(()=>{
+            loadTable();
+            calculate();
+        })
+        .catch(error => console.log(error))
+}
 
-// getData(dataAPI);
+const addData = function(data){
+    let options = {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    };
+    fetch(dataAPI, options)
+        .then(res => {
+            res.json();
+        })
+        .catch(error => console.log(error))
+}
+
+const deleteData = function(id){
+    let options = {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+    fetch(dataAPI + '/' + id, options)
+        .then(res => {
+            res.json();
+        })
+        .catch(error => console.log(error))
+}
+
+getData(dataAPI);
 
 AddButton.addEventListener('click', ()=>{
     AddForm.classList.toggle("active");
 })
 
 const deleteRow = function(index){
+    deleteData(data[index].id);
     data.splice(index,1);
-    
-    localStorage.setItem("roomMoney", JSON.stringify(data));
     loadTable();
     calculate();
 }
@@ -173,19 +201,25 @@ const addNew = function(){
         return;
     }
     Noti.classList.remove("active");
+    let id = 1;
+    if (data.length > 0){
+        id = (data[data.length-1].id + 1)
+    }
     let dateObj = new Date();
     let month = dateObj.getUTCMonth() + 1; //months from 1-12
     let day = dateObj.getUTCDate();
     let year = dateObj.getUTCFullYear();
     let date = day + "/" + month + "/" + year;
-    data.push({
+    let temp = {
+        id,
         payer,
         money,
         user,
         date,
         reason
-    })
-    localStorage.setItem("roomMoney", JSON.stringify(data));
+    }
+    data.push(temp);
+    addData(temp);
     Money.value = "";
     Reason.value = "";
     payers.forEach(item => {
