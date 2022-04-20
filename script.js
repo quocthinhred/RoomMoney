@@ -4,7 +4,7 @@ let user = [];
 let payer = 0;
 let money = 0;
 let reason = "";
-let dataAPI = "http://157.245.195.153:3000/data"
+let dataAPI = "https://mock.thuvienmoba.com/data"
 
 
 const mainTable = document.getElementById("mainTable");
