@@ -266,6 +266,19 @@ payers.forEach((item, index) => {
 
 
 
+const deleteAll = document.getElementById("deleteAll");
+deleteAll.addEventListener('click', ()=>{
+    let pass = prompt("Nhập Password để xoá!", "");
+    if (pass == "confirm"){
+        let i;
+        for (i in document.querySelectorAll("tr > td > button")){
+            document.querySelectorAll("tr > td > button")[0].click();
+        }
+    }
+    else {
+        alert("Mật khẩu là 'confirm' bro!");
+    }
+})
 
 
 

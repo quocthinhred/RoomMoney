@@ -30,6 +30,10 @@
     display: block !important;
 }
 
+#deleteAll {
+    margin: 30px auto;
+}
+
 @keyframes show {
     from {
         opacity: 0;
@@ -38,5 +42,26 @@
     to {
         opacity: 1;
         max-height: 1000px;
+    }
+}
+
+@media only screen and (max-width: 475px){
+    body{
+        width: 100vw;
+    }
+    #table1 {
+        margin: 200px -20%;
+        transform: rotate(90deg);
+    }
+    
+    body > div:nth-child(3){
+        overflow: scroll !important;
+        max-height: 500px;
+    }
+    button {
+        margin-top: 10px !important;
+    }   
+    #table2 tr > td, #table2 tr > th {
+        line-height: 45px;
     }
 }
