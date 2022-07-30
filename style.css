@@ -50,8 +50,8 @@
         width: 100vw;
     }
     #table1 {
-        margin: 200px -20%;
-        transform: rotate(90deg);
+        margin: 200px 0 200px 50%;
+        transform: translateX(-50%) rotate(90deg);
     }
     
     body > div:nth-child(3){
@@ -63,5 +63,8 @@
     }   
     #table2 tr > td, #table2 tr > th {
         line-height: 45px;
+    }
+    body > div.header.text-center.mb-5{
+        overflow: hidden;
     }
 }
