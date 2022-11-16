@@ -229,6 +229,7 @@ const addNew = function(){
     users.forEach(item => {
         item.classList.remove("active");
     })
+    allUser.classList.remove("active");
     user = [];
     payer = 0;
     money = 0;
@@ -300,11 +301,13 @@ allUser.addEventListener('click', () => {
             item.classList.add("active")
         })
         allUser.classList.add("active")
+        user = [1,2,3,4,5]
     } else {
         users.forEach(item => {
             item.classList.remove("active")
         })
         allUser.classList.remove("active")
+        user = []
     }
     
 })
