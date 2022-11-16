@@ -4,7 +4,7 @@ let user = [];
 let payer = 0;
 let money = 0;
 let reason = "";
-let dataAPI = "https://mock.thuvienmoba.com/data"
+let dataAPI = "https://room-money-json.herokuapp.com/data"
 
 
 const mainTable = document.getElementById("mainTable");
