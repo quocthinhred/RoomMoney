@@ -4,7 +4,7 @@ let user = [];
 let payer = 0;
 let money = 0;
 let reason = "";
-let dataAPI = "https://room-money-json.herokuapp.com/data"
+let dataAPI = "https://my-json-vercel.vercel.app/data"
 
 
 const mainTable = document.getElementById("mainTable");
