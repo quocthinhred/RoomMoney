@@ -7,6 +7,7 @@ let reason = "";
 let dataAPI = "https://my-json-vercel.vercel.app/data"
 
 
+const allUser = document.getElementById("all-user");
 const mainTable = document.getElementById("mainTable");
 const calculateTable = document.getElementById("calculateTable");
 const users = document.querySelectorAll(".user");
@@ -245,10 +246,14 @@ users.forEach((item, index) => {
             item.classList.remove("active");
             let temp = user.indexOf(index+1);
             user.splice(temp, 1);
+            allUser.classList.remove("active")
         }
         else {
             item.classList.add("active");
             user.push(index+1);
+            if (isAllActive()){
+                allUser.classList.add("active")
+            }
         }
     })
     
@@ -278,6 +283,30 @@ deleteAll.addEventListener('click', ()=>{
     else {
         alert("Mật khẩu là 'confirm' bro!");
     }
+})
+
+const isAllActive = () => {
+    for (let item of users){
+        if (!item.classList.contains("active")) {
+            return false
+        }
+    }
+    return true
+}
+
+allUser.addEventListener('click', () => {
+    if (!isAllActive()){
+        users.forEach(item => {
+            item.classList.add("active")
+        })
+        allUser.classList.add("active")
+    } else {
+        users.forEach(item => {
+            item.classList.remove("active")
+        })
+        allUser.classList.remove("active")
+    }
+    
 })
 
 
