@@ -1,0 +1,43 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "payer": 2,
+      "money": 80,
+      "user": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "date": "18/4/2022",
+      "reason": "Bánh Mì Hà Nội"
+    },
+    {
+      "id": 2,
+      "payer": 1,
+      "money": 60,
+      "user": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "date": "18/4/2022",
+      "reason": "Paparoti"
+    },
+    {
+      "id": 3,
+      "payer": 1,
+      "money": 200,
+      "user": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "date": "19/4/2022",
+      "reason": "Ăn sáng + Đi chợ"
+    }
+  ]
+}
