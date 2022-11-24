@@ -362,6 +362,37 @@ allUser.addEventListener('click', () => {
     
 })
 
+const addUser = function(name){
+    let id = userList[userList.length - 1].id + 1
+    let options = {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({id, name})
+    };
+    fetch(userURI, options)
+        .then(res => {
+            res.json();
+        })
+        .catch(error => console.log(error))
+}
+
+const submitNewUser = document.getElementById("submit-new-user");
+const newUserName = document.getElementById("new-user-name");
+
+submitNewUser.addEventListener('click', () => {
+    let newName = newUserName.value.trim();
+    if (newName == "") {
+        alert("Vui lòng nhập tên!");
+    } else {
+        addUser(newName)
+    }
+    loadTable()
+    calculate()
+})
+
+
 
 
 
