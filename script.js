@@ -379,6 +379,7 @@ const addUser = function(name){
     fetch(userURI, options)
         .then(res => {
             userList.push({id, name})
+            getUserList();
             res.json();
         })
         .catch(error => console.log(error))
@@ -394,8 +395,6 @@ submitNewUser.addEventListener('click', () => {
     } else {
         addUser(newName)
     }
-    loadTable()
-    calculate()
 })
 
 
