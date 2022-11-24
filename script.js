@@ -118,7 +118,7 @@ const getDomElement = function() {
                 item2.classList.remove("active");
             })
             item.classList.add("active");
-            payer = index+1;
+            payer = userList.filter(item2 => item2.name == item.innerText)[0].id
         })
     })
 }
@@ -131,18 +131,20 @@ const loadTable = function() {
         namePayer = userList.filter(item => item.id == dataList[i].payer)[0]?.name
         let everyMoney = Math.round(((dataList[i].money / dataList[i].user.length) * 100)) / 100;
         
+        let dataRows = ""
+        userList.map(item => {
+            dataRows += `
+                <td>${(dataList[i].user.includes(item.id))?everyMoney:""}</td>
+            `
+        })
         mainTable.innerHTML += `
             <tr id="row-${i}">
-                <th scope="row">${dataList[i].created_time.slice(0,10)}</th>
-                <td>${(dataList[i].user.includes(1))?everyMoney:""}</td>
-                <td>${(dataList[i].user.includes(2))?everyMoney:""}</td>
-                <td>${(dataList[i].user.includes(3))?everyMoney:""}</td>
-                <td>${(dataList[i].user.includes(4))?everyMoney:""}</td>
-                <td>${(dataList[i].user.includes(5))?everyMoney:""}</td>
-                <td>${dataList[i].money}</td>
-                <td>${namePayer}</td>
-                <td>${dataList[i].reason}</td>
-                <td><button type="button" onclick=deleteRow(${i}) class="btn btn-danger">Xoá</button></td>
+            <th scope="row">${dataList[i].created_time.slice(0,10)}</th>
+            ${dataRows}
+            <td>${dataList[i].money}</td>
+            <td>${namePayer}</td>
+            <td>${dataList[i].reason}</td>
+            <td><button type="button" onclick=deleteRow(${i}) class="btn btn-danger">Xoá</button></td>
             </tr>
         `
     }
@@ -208,7 +210,7 @@ const calculate = async function(){
     <tr>
         <th scope="row">Tiêu</th>
         ${useRows}
-        <td>${totalUse}</td>
+        <td>${Math.round(totalUse)}</td>
     </tr>
     <tr>
         <th scope="row">Nhận Lại</th>
@@ -351,7 +353,10 @@ allUser.addEventListener('click', () => {
             item.classList.add("active")
         })
         allUser.classList.add("active")
-        user = [1,2,3,4,5]
+        user = []
+        userList.forEach(item => {
+            user.push(item.id);
+        })
     } else {
         users.forEach(item => {
             item.classList.remove("active")
@@ -373,6 +378,7 @@ const addUser = function(name){
     };
     fetch(userURI, options)
         .then(res => {
+            userList.push({id, name})
             res.json();
         })
         .catch(error => console.log(error))
