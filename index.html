@@ -32,7 +32,7 @@
                 <input id="reason" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
             </div>
             <h2 class="mt-5">Người Chi</h2>
-            <div class="mb-5">
+            <div id="payer-chosen" class="mb-5">
                 <button type="button" class="payer btn btn-outline-danger mr-3">Thịnh</button>
                 <button type="button" class="payer btn btn-outline-danger mr-3">Đăng</button>
                 <button type="button" class="payer btn btn-outline-danger mr-3">Danh</button>
@@ -43,7 +43,7 @@
             <div class="mt-3 mb-3">
                 <button id="all-user" type="button" class="all btn btn-outline-success mr-3">Tất cả</button>
             </div>
-            <div class="">
+            <div id="user-chosen" class="">
                 <button type="button" class="user btn btn-outline-success mr-3">Thịnh</button>
                 <button type="button" class="user btn btn-outline-success mr-3">Đăng</button>
                 <button type="button" class="user btn btn-outline-success mr-3">Danh</button>
@@ -60,7 +60,7 @@
         <div class="calculateForm mt-5">
             <table id="table1" class="table table-striped">
                 <thead class="thead-dark">
-                    <tr>
+                    <tr id="head-table">
                         <th scope="col"></th>
                         <th scope="col">Thịnh</th>
                         <th scope="col">Đăng</th>
@@ -106,7 +106,7 @@
         <div class="spent">
             <table id="table2" class="table table-striped">
                 <thead class="thead-dark">
-                    <tr>
+                    <tr id="detail-head">
                         <th scope="col">Ngày</th>
                         <th scope="col">Thịnh</th>
                         <th scope="col">Đăng</th>
